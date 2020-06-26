@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsTest", "MathsTest\MathsTest.csproj", "{E06839C8-71B8-4492-82FB-7F59FFF464E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E06839C8-71B8-4492-82FB-7F59FFF464E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06839C8-71B8-4492-82FB-7F59FFF464E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06839C8-71B8-4492-82FB-7F59FFF464E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06839C8-71B8-4492-82FB-7F59FFF464E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

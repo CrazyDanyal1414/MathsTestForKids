@@ -1,0 +1,12 @@
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/MathsTest.deps.json
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/MathsTest.runtimeconfig.json
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/MathsTest.runtimeconfig.dev.json
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/MathsTest.dll
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/MathsTest.pdb
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.csprojAssemblyReference.cache
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.AssemblyInfoInputs.cache
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.AssemblyInfo.cs
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.csproj.CoreCompileInputs.cache
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.dll
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.pdb
+/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.genruntimeconfig.cache
