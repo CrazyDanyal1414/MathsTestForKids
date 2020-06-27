@@ -48,13 +48,13 @@ namespace MathsTest
 			{
 				ToFile obj = new ToFile(numberOfQuestions, userDifficulty, totalScore, totalEasyQuestion, totalEasyScore, totalNormalQuestion, totalNormalScore, totalHardQuestion, totalHardScore, easyTests, normalTests, hardTests, twoPlayerChallenge);
 				IFormatter formatter = new BinaryFormatter();
-				Stream stream = new FileStream($"{userName}.gitignore", FileMode.Create, FileAccess.Write);
+				Stream stream = new FileStream(FileUtils.GetUserFileName(userName), FileMode.Create, FileAccess.Write);
 				formatter.Serialize(stream, obj);
 				stream.Close();
 			}
 			public static ToFile DeserializeLastTest(string userName)
 			{
-					Stream stream = new FileStream($"{userName}.gitignore", FileMode.Open, FileAccess.Read);
+					Stream stream = new FileStream(FileUtils.GetUserFileName(userName), FileMode.Open, FileAccess.Read);
 					IFormatter formatter = new BinaryFormatter();
 					ToFile objnew = (ToFile)formatter.Deserialize(stream);
 					stream.Close();

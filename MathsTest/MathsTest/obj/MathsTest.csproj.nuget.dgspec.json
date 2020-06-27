@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/danyalqureshi/Projects/MathsTest/MathsTest/MathsTest.csproj": {}
+    "/home/rz/Documents/dev/Danyal/MathsTestForKids/MathsTest/MathsTest/MathsTest.csproj": {}
   },
   "projects": {
-    "/Users/danyalqureshi/Projects/MathsTest/MathsTest/MathsTest.csproj": {
+    "/home/rz/Documents/dev/Danyal/MathsTestForKids/MathsTest/MathsTest/MathsTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/danyalqureshi/Projects/MathsTest/MathsTest/MathsTest.csproj",
+        "projectUniqueName": "/home/rz/Documents/dev/Danyal/MathsTestForKids/MathsTest/MathsTest/MathsTest.csproj",
         "projectName": "MathsTest",
-        "projectPath": "/Users/danyalqureshi/Projects/MathsTest/MathsTest/MathsTest.csproj",
-        "packagesPath": "/Users/danyalqureshi/.nuget/packages/",
-        "outputPath": "/Users/danyalqureshi/Projects/MathsTest/MathsTest/obj/",
+        "projectPath": "/home/rz/Documents/dev/Danyal/MathsTestForKids/MathsTest/MathsTest/MathsTest.csproj",
+        "packagesPath": "/home/rz/.nuget/packages/",
+        "outputPath": "/home/rz/Documents/dev/Danyal/MathsTestForKids/MathsTest/MathsTest/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/danyalqureshi/.config/NuGet/NuGet.Config"
+          "/home/rz/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -45,12 +48,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
         }
       }
     }

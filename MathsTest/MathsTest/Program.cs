@@ -179,7 +179,7 @@ namespace MathsTest
 			double hardTests = 0;
 			int twoPlayerChallenge = 0;
 			OperationQuestionScore score = new OperationQuestionScore();
-			if (File.Exists($"{userName}.gitignore"))
+			if (File.Exists(FileUtils.GetUserFileName(userName)))
 			{
 				ToFile objnew = SaveToFile.DeserializeLastTest(userName);
 				totalEasyQuestion = objnew.TotalEasyQuestion;
@@ -194,7 +194,7 @@ namespace MathsTest
 				twoPlayerChallenge = objnew.TwoPlayerChallenge;
 			}
 			UserDifficulty userSuggestingDifficulty = UserDifficulty.Easy;
-			if (File.Exists($"{userName}.gitignore"))
+			if (File.Exists(FileUtils.GetUserFileName(userName)))
 			{
 				userSuggestingDifficulty = CanUseManyTimes.SuggestingDifficulty(userName);
 			}
