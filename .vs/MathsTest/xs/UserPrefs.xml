@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{E48A33A5-DE45-4F4F-AE7D-7CDFC668160A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UserLoginSignUp.cs">
+    <Files>
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="RunTimer.cs" />
+      <File FileName="Calculation.cs" />
+      <File FileName="CanUseManyTimes.cs" />
+      <File FileName="SaveLastTestResults.cs" />
+      <File FileName="UserLoginSignUp.cs" Line="53" Column="14" />
+      <File FileName="FileUtils.cs" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MathsTest PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
