@@ -90,6 +90,17 @@ namespace MathsTest
 			public int TotalScore { get; set; }
 			public int PlayerOneScore { get; private set; }
 			public int PlayerTwoScore { get; private set; }
+			public double TotalEasyQuestion { get; set; }
+		    public double TotalEasyScore { get; set; }
+	        public double TotalNormalQuestion { get; set; }
+            public double TotalNormalScore { get; set; }
+			public double TotalHardQuestion { get; set; }
+			public double TotalHardScore { get; set; }
+			public double EasyTests { get; set; }
+			public double NormalTests { get; set; }
+			public double HardTests { get; set; }
+			public int PlayerOneTwoPlayerChallenge { get; set; }
+			public int PlayerTwoTwoPlayerChallenge { get; set; }
 
 			public void Increment(MathOperation mathOperation, bool isCorrect)
 			{

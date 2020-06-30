@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using static MathsTest.SaveLastTestResults;
 
 namespace MathsTest
@@ -94,6 +95,54 @@ namespace MathsTest
 				}
 			}
 			return userDifficulty;
+		}
+
+		public static void ScoreDisplay(int numberOfQuestions, Calculation.OperationQuestionScore score, UserDifficulty userDifficulty, string userName)
+        {
+			if (File.Exists(FileUtils.GetUserFileName(userName)))
+			{
+				ToFile objnew = SaveToFile.DeserializeLastTest(userName);
+				score.TotalEasyQuestion = objnew.TotalEasyQuestion;
+				score.TotalEasyScore = objnew.TotalEasyScore;
+				score.TotalNormalQuestion = objnew.TotalNormalQuestion;
+				score.TotalNormalScore = objnew.TotalNormalScore;
+				score.TotalHardQuestion = objnew.TotalHardQuestion;
+				score.TotalHardScore = objnew.TotalHardScore;
+				score.EasyTests = objnew.EasyTests;
+				score.NormalTests = objnew.NormalTests;
+				score.HardTests = objnew.HardTests;
+				score.PlayerOneTwoPlayerChallenge = objnew.TwoPlayerChallenge;
+			}
+
+			if (userDifficulty == UserDifficulty.Easy)
+			{
+				Console.WriteLine($"Addition score: {score.AdditionScore} of {score.AdditionQuestion}");
+				Console.WriteLine($"Subtraction score: {score.SubtractionScore} of {score.SubtractionQuestion}");
+				Console.WriteLine($"Multiplication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
+				score.EasyTests++;
+				score.TotalEasyQuestion = score.TotalEasyQuestion + numberOfQuestions;
+				score.TotalEasyScore = Math.Round((score.TotalEasyScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / score.EasyTests, 2);
+			}
+			else if (userDifficulty == UserDifficulty.Normal)
+			{
+				Console.WriteLine($"Addition score: {score.AdditionScore} of {score.AdditionQuestion}");
+				Console.WriteLine($"Subtraction score: {score.SubtractionScore} of {score.SubtractionQuestion}");
+				Console.WriteLine($"Multiplication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
+				Console.WriteLine($"Division score: {score.DivisionScore} of {score.DivisionQuestion}");
+				score.NormalTests++;
+				score.TotalNormalQuestion = score.TotalNormalQuestion + numberOfQuestions;
+				score.TotalNormalScore = Math.Round((score.TotalNormalScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / score.NormalTests, 2);
+			}
+			else if (userDifficulty == UserDifficulty.Hard)
+			{
+				Console.WriteLine($"Multipication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
+				Console.WriteLine($"Division score: {score.DivisionScore} of {score.DivisionQuestion}");
+				Console.WriteLine($"Power score: {score.PowerScore} of {score.PowerQuestion}");
+				Console.WriteLine($"Squareroot score: {score.SquareRootScore} of {score.SquareRootQuestion}");
+				score.HardTests++;
+				score.TotalHardQuestion = score.TotalHardQuestion + numberOfQuestions;
+				score.TotalHardScore = Math.Round((score.TotalHardScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / score.HardTests, 2);
+			}
 		}
 	}
 }

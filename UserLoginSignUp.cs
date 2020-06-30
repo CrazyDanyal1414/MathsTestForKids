@@ -67,7 +67,7 @@ namespace MathsTest
 				var userDetails = new UserManager();
 				if (File.Exists(filePath))
 				{
-					userDetails = UserManager.DeserializeAccountDetails(filePath);
+					userDetails = DeserializeAccountDetails(filePath);
 				}
 
 				if (userDetails is null)

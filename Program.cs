@@ -108,101 +108,63 @@ namespace MathsTest
 			var filePath = Path.Combine(AppContext.BaseDirectory, "AccountDetail.gitignore");
 			(string userName, int LogInOrSignUp) = UserManager.LogInProcess(filePath);
 
-			double totalEasyQuestion = 0;
-			double totalEasyScore = 0;
-			double totalNormalQuestion = 0;
-			double totalNormalScore = 0;
-			double totalHardQuestion = 0;
-			double totalHardScore = 0;
-			double easyTests = 0;
-			double normalTests = 0;
-			double hardTests = 0;
-			int twoPlayerChallenge = 0;
 			OperationQuestionScore score = new OperationQuestionScore();
-			if (File.Exists(FileUtils.GetUserFileName(userName)))
-			{
-				ToFile objnew = SaveToFile.DeserializeLastTest(userName);
-				totalEasyQuestion = objnew.TotalEasyQuestion;
-				totalEasyScore = objnew.TotalEasyScore;
-				totalNormalQuestion = objnew.TotalNormalQuestion;
-				totalNormalScore = objnew.TotalNormalScore;
-				totalHardQuestion = objnew.TotalHardQuestion;
-				totalHardScore = objnew.TotalHardScore;
-				easyTests = objnew.EasyTests;
-				normalTests = objnew.NormalTests;
-				hardTests = objnew.HardTests;
-				twoPlayerChallenge = objnew.TwoPlayerChallenge;
-			}
+
 			UserDifficulty userSuggestingDifficulty = UserDifficulty.Easy;
 			if (File.Exists(FileUtils.GetUserFileName(userName)))
 			{
 				userSuggestingDifficulty = CanUseManyTimes.SuggestingDifficulty(userName);
 			}
             var (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer) = UserInputs();
+			string playerTwoUserName = "";
 
-            if (testOrTwoPlayer == "T")
-            {
-				if (LogInOrSignUp == 1)
+			if (LogInOrSignUp == 1)
+			{
+				if (autoDifficultyInput == "Y")
 				{
-					if (autoDifficultyInput == "Y")
-					{
-						userDifficulty = userSuggestingDifficulty;
-					}
+					userDifficulty = userSuggestingDifficulty;
 				}
+			}
 
+			if (testOrTwoPlayer == "T")
+			{
 				score = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
 
 				Console.WriteLine($"Total score: {score.TotalScore} of {numberOfQuestions}");
-
-				if (userDifficulty == UserDifficulty.Easy)
-				{
-					Console.WriteLine($"Addition score: {score.AdditionScore} of {score.AdditionQuestion}");
-					Console.WriteLine($"Subtraction score: {score.SubtractionScore} of {score.SubtractionQuestion}");
-					Console.WriteLine($"Multiplication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
-					easyTests++;
-					totalEasyQuestion = totalEasyQuestion + numberOfQuestions;
-					totalEasyScore = Math.Round((totalEasyScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / easyTests, 2);
-				}
-				else if (userDifficulty == UserDifficulty.Normal)
-				{
-					Console.WriteLine($"Addition score: {score.AdditionScore} of {score.AdditionQuestion}");
-					Console.WriteLine($"Subtraction score: {score.SubtractionScore} of {score.SubtractionQuestion}");
-					Console.WriteLine($"Multiplication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
-					Console.WriteLine($"Division score: {score.DivisionScore} of {score.DivisionQuestion}");
-					normalTests++;
-					totalNormalQuestion = totalNormalQuestion + numberOfQuestions;
-					totalNormalScore = Math.Round((totalNormalScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / normalTests, 2);
-				}
-				else if (userDifficulty == UserDifficulty.Hard)
-				{
-					Console.WriteLine($"Multipication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
-					Console.WriteLine($"Division score: {score.DivisionScore} of {score.DivisionQuestion}");
-					Console.WriteLine($"Power score: {score.PowerScore} of {score.PowerQuestion}");
-					Console.WriteLine($"Squareroot score: {score.SquareRootScore} of {score.SquareRootQuestion}");
-					hardTests++;
-					totalHardQuestion = totalHardQuestion + numberOfQuestions;
-					totalHardScore = Math.Round((totalHardScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / hardTests, 2);
-				}
+				CanUseManyTimes.ScoreDisplay(numberOfQuestions, score, userDifficulty, userName);
 			}
 			else if (testOrTwoPlayer == "2")
             {
 				Console.WriteLine($"Player 1: {userName}");
 				Console.WriteLine($"What is Player 2's name?");
-				(string playerTwoUserName, _) = UserManager.LogInProcess(filePath);
+				(playerTwoUserName, _) = UserManager.LogInProcess(filePath);
+				if (File.Exists(FileUtils.GetUserFileName(playerTwoUserName)))
+				{
+					SaveToFile.DeserializeLastTest(playerTwoUserName);
+				}
 				Console.WriteLine($"{userName} will go first!");
 				OperationQuestionScore playerOneScore = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
 				Console.WriteLine($"{userName} got a score of {playerOneScore.PlayerOneScore} out of {numberOfQuestions}");
+				CanUseManyTimes.ScoreDisplay(numberOfQuestions, playerOneScore, userDifficulty, userName);
 				Console.WriteLine($"Now it is {playerTwoUserName}'s turn");
+				string playerTwoReady;
+				do
+				{
+					Console.WriteLine($"Are you ready {playerTwoUserName}?");
+					playerTwoReady = Console.ReadLine().ToUpper();
+				} while (playerTwoReady != "Y");
 				OperationQuestionScore playerTwoScore = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
 				Console.WriteLine($"{playerTwoUserName} got a score of {playerTwoScore.PlayerTwoScore} out of {numberOfQuestions}");
+				CanUseManyTimes.ScoreDisplay(numberOfQuestions, playerTwoScore, userDifficulty, playerTwoUserName);
 				if (playerOneScore.PlayerOneScore > playerTwoScore.PlayerTwoScore)
                 {
 					Console.WriteLine($"{userName} won the challenge!🥳");
-					twoPlayerChallenge++;
+					score.PlayerOneTwoPlayerChallenge++;
                 }
 				else if (playerOneScore.PlayerOneScore < playerTwoScore.PlayerTwoScore)
 				{
 					Console.WriteLine($"{playerTwoUserName} won the challenge!🥳");
+					score.PlayerTwoTwoPlayerChallenge++;
 				}
                 else
                 {
@@ -219,12 +181,16 @@ namespace MathsTest
 			} while (statisticsDisplay != "Y" && statisticsDisplay != "N");
 			if (statisticsDisplay == "Y")
             {
-				Console.WriteLine($"You have answered {totalEasyQuestion} easy questions so far with an average score of {totalEasyScore}%");
-				Console.WriteLine($"You have answered {totalNormalQuestion} normal questions so far with an average score of {totalNormalScore}%");
-				Console.WriteLine($"You have answered {totalHardQuestion} hard questions so far with an average score of {totalHardScore}%");
-				Console.WriteLine($"You have won {twoPlayerChallenge} twoPlayerChallenges");
+				Console.WriteLine($"You have answered {score.TotalEasyQuestion} easy questions so far with an average score of {score.TotalEasyScore}%");
+				Console.WriteLine($"You have answered {score.TotalNormalQuestion} normal questions so far with an average score of {score.TotalNormalScore}%");
+				Console.WriteLine($"You have answered {score.TotalHardQuestion} hard questions so far with an average score of {score.TotalHardScore}%");
+				Console.WriteLine($"You have won {score.PlayerOneTwoPlayerChallenge} twoPlayerChallenges");
 			}
-		    SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, totalEasyQuestion, totalEasyScore, totalNormalQuestion, totalNormalScore, totalHardQuestion, totalHardScore, easyTests, normalTests, hardTests, twoPlayerChallenge);
+		    SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.PlayerOneTwoPlayerChallenge);
+			if (testOrTwoPlayer == "2")
+            {
+				SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, playerTwoUserName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.PlayerOneTwoPlayerChallenge);
+			}
 		}
 	}
 }
