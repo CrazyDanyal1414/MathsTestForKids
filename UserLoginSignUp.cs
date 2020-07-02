@@ -119,6 +119,7 @@ namespace MathsTest
 						Console.WriteLine("How shall we adress you?");
 						userName = Console.ReadLine();
                     }
+					Console.WriteLine("\n");
 				}
 				return (userName, LogInOrSignUp);
 			}

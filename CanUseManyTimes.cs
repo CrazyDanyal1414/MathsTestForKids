@@ -97,7 +97,7 @@ namespace MathsTest
 			return userDifficulty;
 		}
 
-		public static void ScoreDisplay(int numberOfQuestions, Calculation.OperationQuestionScore score, UserDifficulty userDifficulty, string userName)
+		public static void ScoreDisplay(int numberOfQuestions, Calculation.OperationQuestionScore score, Calculation.OperationQuestionScore playerOneScore, Calculation.OperationQuestionScore playerTwoScore, UserDifficulty userDifficulty, string userName)
         {
 			if (File.Exists(FileUtils.GetUserFileName(userName)))
 			{
@@ -111,7 +111,8 @@ namespace MathsTest
 				score.EasyTests = objnew.EasyTests;
 				score.NormalTests = objnew.NormalTests;
 				score.HardTests = objnew.HardTests;
-				score.PlayerOneTwoPlayerChallenge = objnew.TwoPlayerChallenge;
+				score.PlayerOneTwoPlayerChallenge = objnew.PlayerOneTwoPlayerChallenge;
+				score.PlayerTwoTwoPlayerChallenge = objnew.PlayerTwoTwoPlayerChallenge;
 			}
 
 			if (userDifficulty == UserDifficulty.Easy)
@@ -120,8 +121,8 @@ namespace MathsTest
 				Console.WriteLine($"Subtraction score: {score.SubtractionScore} of {score.SubtractionQuestion}");
 				Console.WriteLine($"Multiplication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
 				score.EasyTests++;
-				score.TotalEasyQuestion = score.TotalEasyQuestion + numberOfQuestions;
-				score.TotalEasyScore = Math.Round((score.TotalEasyScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / score.EasyTests, 2);
+				score.TotalEasyQuestion = playerOneScore.TotalEasyQuestion + playerTwoScore.TotalEasyQuestion + score.TotalEasyQuestion + numberOfQuestions;
+				score.TotalEasyScore = Math.Round((playerOneScore.TotalEasyScore + playerTwoScore.TotalEasyScore + score.TotalEasyScore + ((double)(score.TotalScore + playerOneScore.TotalScore + playerTwoScore.TotalScore) / (double)numberOfQuestions) * 100) / score.EasyTests, 2);
 			}
 			else if (userDifficulty == UserDifficulty.Normal)
 			{
@@ -130,8 +131,8 @@ namespace MathsTest
 				Console.WriteLine($"Multiplication score: {score.MultiplicationScore} of {score.MultiplicationQuestion}");
 				Console.WriteLine($"Division score: {score.DivisionScore} of {score.DivisionQuestion}");
 				score.NormalTests++;
-				score.TotalNormalQuestion = score.TotalNormalQuestion + numberOfQuestions;
-				score.TotalNormalScore = Math.Round((score.TotalNormalScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / score.NormalTests, 2);
+				score.TotalNormalQuestion = playerOneScore.TotalNormalQuestion + playerTwoScore.TotalNormalQuestion + score.TotalNormalQuestion + numberOfQuestions;
+				score.TotalNormalScore = Math.Round((playerOneScore.TotalNormalScore + playerTwoScore.TotalNormalScore + score.TotalNormalScore + ((double)(score.TotalScore + playerOneScore.TotalScore + playerTwoScore.TotalScore) / (double)numberOfQuestions) * 100) / score.NormalTests, 2);
 			}
 			else if (userDifficulty == UserDifficulty.Hard)
 			{
@@ -140,8 +141,25 @@ namespace MathsTest
 				Console.WriteLine($"Power score: {score.PowerScore} of {score.PowerQuestion}");
 				Console.WriteLine($"Squareroot score: {score.SquareRootScore} of {score.SquareRootQuestion}");
 				score.HardTests++;
-				score.TotalHardQuestion = score.TotalHardQuestion + numberOfQuestions;
-				score.TotalHardScore = Math.Round((score.TotalHardScore + ((double)score.TotalScore / (double)numberOfQuestions) * 100) / score.HardTests, 2);
+				score.TotalHardQuestion = playerOneScore.TotalHardQuestion + playerTwoScore.TotalHardQuestion + score.TotalHardQuestion + numberOfQuestions;
+				score.TotalHardScore = Math.Round((playerOneScore.TotalHardScore + playerTwoScore.TotalHardScore + score.TotalHardScore + ((double)(score.TotalScore + playerOneScore.TotalScore + playerTwoScore.TotalScore) / (double)numberOfQuestions) * 100) / score.HardTests, 2);
+			}
+		}
+
+		public static void StatsDisplay(Calculation.OperationQuestionScore score)
+		{
+			string statisticsDisplay;
+			do
+			{
+				Console.WriteLine("Would you like to see your all time statistics? Please type 'Y' or 'N'");
+				statisticsDisplay = Console.ReadLine().ToUpper();
+			} while (statisticsDisplay != "Y" && statisticsDisplay != "N");
+			if (statisticsDisplay == "Y")
+			{
+				Console.WriteLine($"You have answered {score.TotalEasyQuestion} easy questions so far with an average score of {score.TotalEasyScore}%");
+				Console.WriteLine($"You have answered {score.TotalNormalQuestion} normal questions so far with an average score of {score.TotalNormalScore}%");
+				Console.WriteLine($"You have answered {score.TotalHardQuestion} hard questions so far with an average score of {score.TotalHardScore}%");
+				Console.WriteLine($"You have won {score.PlayerOneTwoPlayerChallenge} twoPlayerChallenges");
 			}
 		}
 	}

@@ -22,9 +22,10 @@ namespace MathsTest
 			public double EasyTests { get; }
 			public double NormalTests { get; }
 			public double HardTests { get; }
-			public int TwoPlayerChallenge { get; }
+			public int PlayerOneTwoPlayerChallenge { get; }
+			public int PlayerTwoTwoPlayerChallenge { get; }
 
-			public ToFile(int numberOfQuestions, UserDifficulty userDifficulty, int totalScore, double totalEasyQuestion, double totalEasyScore, double totalNormalQuestion, double totalNormalScore, double totalHardQuestion, double totalHardScore, double easyTests, double normalTests, double hardTests, int twoPlayerChallenge)
+			public ToFile(int numberOfQuestions, UserDifficulty userDifficulty, int totalScore, double totalEasyQuestion, double totalEasyScore, double totalNormalQuestion, double totalNormalScore, double totalHardQuestion, double totalHardScore, double easyTests, double normalTests, double hardTests, int playerOneTwoPlayerChallenge, int playerTwoTwoPlayerChallenge)
 			{
 				NumberOfQuestions = numberOfQuestions;
 				UserDifficulty = userDifficulty;
@@ -38,15 +39,16 @@ namespace MathsTest
 				EasyTests = easyTests;
 				NormalTests = normalTests;
 				HardTests = hardTests;
-				TwoPlayerChallenge = twoPlayerChallenge;
+				PlayerOneTwoPlayerChallenge = playerOneTwoPlayerChallenge;
+				PlayerTwoTwoPlayerChallenge = playerTwoTwoPlayerChallenge;
 			}
 		}
 
 		public class SaveToFile
 		{
-			public static void SerializeLastTest(int numberOfQuestions, int totalScore, UserDifficulty userDifficulty, string userName, double totalEasyQuestion, double totalEasyScore, double totalNormalQuestion, double totalNormalScore, double totalHardQuestion, double totalHardScore, double easyTests, double normalTests, double hardTests, int twoPlayerChallenge)
+			public static void SerializeLastTest(int numberOfQuestions, int totalScore, UserDifficulty userDifficulty, string userName, double totalEasyQuestion, double totalEasyScore, double totalNormalQuestion, double totalNormalScore, double totalHardQuestion, double totalHardScore, double easyTests, double normalTests, double hardTests, int playerOneTwoPlayerChallenge, int playerTwoTwoPlayerChallenge)
 			{
-				ToFile obj = new ToFile(numberOfQuestions, userDifficulty, totalScore, totalEasyQuestion, totalEasyScore, totalNormalQuestion, totalNormalScore, totalHardQuestion, totalHardScore, easyTests, normalTests, hardTests, twoPlayerChallenge);
+				ToFile obj = new ToFile(numberOfQuestions, userDifficulty, totalScore, totalEasyQuestion, totalEasyScore, totalNormalQuestion, totalNormalScore, totalHardQuestion, totalHardScore, easyTests, normalTests, hardTests, playerOneTwoPlayerChallenge, playerTwoTwoPlayerChallenge);
 				IFormatter formatter = new BinaryFormatter();
 				Stream stream = new FileStream(FileUtils.GetUserFileName(userName), FileMode.Create, FileAccess.Write);
 				formatter.Serialize(stream, obj);
