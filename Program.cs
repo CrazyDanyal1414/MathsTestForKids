@@ -4,6 +4,7 @@ using System.IO;
 using static MathsTest.Calculation;
 using static MathsTest.SaveLastTestResults;
 using static MathsTest.UserLoginSignUp;
+using static MathsTest.CanUseManyTimes;
 
 
 namespace MathsTest
@@ -133,8 +134,8 @@ namespace MathsTest
 				score = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
 
 				Console.WriteLine($"Total score: {score.TotalScore} of {numberOfQuestions}");
-				CanUseManyTimes.ScoreDisplay(numberOfQuestions, score, playerOneScore, playerTwoScore, userDifficulty, userName);
-				CanUseManyTimes.StatsDisplay(score);
+				ScoreDisplay(numberOfQuestions, score, playerOneScore, playerTwoScore, userDifficulty, userName);
+				StatsDisplay(score);
 				SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.PlayerOneTwoPlayerChallenge, score.PlayerTwoTwoPlayerChallenge);
 			}
 			else if (testOrTwoPlayer == "2")
@@ -148,8 +149,8 @@ namespace MathsTest
 				}
 				Console.WriteLine($"{userName} will go first!");
 				playerOneScore = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
-				Console.WriteLine($"{userName} got a score of {playerOneScore.PlayerOneScore} out of {numberOfQuestions}");
-				CanUseManyTimes.ScoreDisplay(numberOfQuestions, score, playerOneScore, playerTwoScore, userDifficulty, userName);
+				Console.WriteLine($"{userName} got a score of {playerOneScore.PlayerOneScore} out of {numberOfQuestions}", false);
+				ScoreDisplay(numberOfQuestions, score, playerOneScore, playerTwoScore, userDifficulty, userName);
 				Console.WriteLine($"Now it is {playerTwoUserName}'s turn");
 				string playerTwoReady;
 				do
@@ -158,8 +159,8 @@ namespace MathsTest
 					playerTwoReady = Console.ReadLine().ToUpper();
 				} while (playerTwoReady != "Y");
 				playerTwoScore = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
-				Console.WriteLine($"{playerTwoUserName} got a score of {playerTwoScore.PlayerTwoScore} out of {numberOfQuestions}");
-				CanUseManyTimes.ScoreDisplay(numberOfQuestions, score, playerOneScore, playerTwoScore, userDifficulty, playerTwoUserName);
+				Console.WriteLine($"{playerTwoUserName} got a score of {playerTwoScore.PlayerTwoScore} out of {numberOfQuestions}", false);
+				ScoreDisplay(numberOfQuestions, score, playerOneScore, playerTwoScore, userDifficulty, playerTwoUserName);
 				SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.PlayerOneTwoPlayerChallenge, playerTwoScore.PlayerTwoTwoPlayerChallenge);
 				if (playerOneScore.PlayerOneScore > playerTwoScore.PlayerTwoScore)
                 {
@@ -175,9 +176,9 @@ namespace MathsTest
                 {
 					Console.WriteLine("This challenge ended in stalemate");
                 }
-				SaveToFile.SerializeLastTest(numberOfQuestions, playerOneScore.TotalScore, userDifficulty, userName, playerOneScore.TotalEasyQuestion, playerOneScore.TotalEasyScore, playerOneScore.TotalNormalQuestion, playerOneScore.TotalNormalScore, playerOneScore.TotalHardQuestion, playerOneScore.TotalHardScore, playerOneScore.EasyTests, playerOneScore.NormalTests, playerOneScore.HardTests, playerOneScore.PlayerOneTwoPlayerChallenge, playerOneScore.PlayerTwoTwoPlayerChallenge);
-				SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.PlayerOneTwoPlayerChallenge, playerTwoScore.PlayerTwoTwoPlayerChallenge);
-				CanUseManyTimes.StatsDisplay(playerOneScore);
+				SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.PlayerOneTwoPlayerChallenge, score.PlayerTwoTwoPlayerChallenge);
+				SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, playerTwoUserName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.PlayerOneTwoPlayerChallenge, score.PlayerTwoTwoPlayerChallenge);
+				StatsDisplay(playerOneScore);
 			}
 		}
 	}

@@ -23,3 +23,6 @@
 /Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.dll
 /Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.pdb
 /Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.genruntimeconfig.cache
+/Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Nito.Cancellation.dll
+/Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Nito.Disposables.dll
+/Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.csproj.CopyComplete

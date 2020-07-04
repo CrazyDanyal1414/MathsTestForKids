@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using static MathsTest.CanUseManyTimes;
 
 namespace MathsTest
@@ -8,7 +9,7 @@ namespace MathsTest
     {
 		public bool IsTimeLeft { get; private set; } = true;
 		static bool timerRunning = true;
-		public static void Timer(int numberOfSeconds)
+		public static void Timer(int numberOfSeconds, CancellationToken cancellationToken)
 		{
 			var whenToStop = DateTime.Now.AddSeconds(numberOfSeconds);
 			while (DateTime.Now < whenToStop)
@@ -22,22 +23,22 @@ namespace MathsTest
 			}
 		}
 
-		public Thread timerThread;
+		public Task timerTask;
+		CancellationTokenSource cancellationToken = new CancellationTokenSource();
 		public RunTimer(int numberOfSeconds)
 		{
-			timerThread = new Thread(new ThreadStart(() =>
+			timerTask = Task.Run(() =>
 			{
-				Timer(numberOfSeconds);
-				timerThread = null;
+				Timer(numberOfSeconds, cancellationToken.Token);
+				timerTask = null;
 				IsTimeLeft = false;
-			}));
-			timerThread.Start();
+			}, cancellationToken.Token);
 		}
 		public void StopTimer(int numberOfQuestionsLeft)
 		{
-			if (numberOfQuestionsLeft == 0)
-			{
-				timerRunning = false;
+			if(numberOfQuestionsLeft == 0)
+            {
+				cancellationToken.Cancel();
 			}
 		}
 	}

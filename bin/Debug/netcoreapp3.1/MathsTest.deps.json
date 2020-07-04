@@ -7,10 +7,36 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "MathsTest/1.0.0": {
+        "dependencies": {
+          "Nito.Cancellation": "1.0.5"
+        },
         "runtime": {
           "MathsTest.dll": {}
         }
-      }
+      },
+      "Nito.Cancellation/1.0.5": {
+        "dependencies": {
+          "Nito.Disposables": "1.2.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.Cancellation.dll": {
+            "assemblyVersion": "1.0.5.0",
+            "fileVersion": "1.0.5.0"
+          }
+        }
+      },
+      "Nito.Disposables/1.2.3": {
+        "dependencies": {
+          "System.Collections.Immutable": "1.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.Disposables.dll": {
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "1.2.3.0"
+          }
+        }
+      },
+      "System.Collections.Immutable/1.4.0": {}
     }
   },
   "libraries": {
@@ -18,6 +44,27 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Nito.Cancellation/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/MehN8HvuOgPZsNmqyu0UdPWXCAJVqcy0LEqw1Ch1++ag1h0qPt5YLH+BCIMFDC5UMW/4RzJW2GdRDYg7Vi2yA==",
+      "path": "nito.cancellation/1.0.5",
+      "hashPath": "nito.cancellation.1.0.5.nupkg.sha512"
+    },
+    "Nito.Disposables/1.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fFB73Rw/+/X6ghm+4kilO5wKxqy7bZChvIBieX2Kt5Zv3jLLkZWaEFdiFLVF0LBR8t4EXTF/qhMUsiBCZX/GOQ==",
+      "path": "nito.disposables/1.2.3",
+      "hashPath": "nito.disposables.1.2.3.nupkg.sha512"
+    },
+    "System.Collections.Immutable/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-71hw5RUJRu5+q/geUY69gpXD8Upd12cH+F3MwpXV2zle7Bqqkrmc1JblOTuvUcgmdnUtQvBlV5e1d6RH+H2lvA==",
+      "path": "system.collections.immutable/1.4.0",
+      "hashPath": "system.collections.immutable.1.4.0.nupkg.sha512"
     }
   }
 }
