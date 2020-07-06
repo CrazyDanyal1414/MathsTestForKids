@@ -102,7 +102,7 @@ namespace MathsTest
 			public int PlayerOneTwoPlayerChallenge { get; set; }
 			public int PlayerTwoTwoPlayerChallenge { get; set; }
 
-			public void Increment(MathOperation mathOperation, bool isCorrect)
+			public void Increment(MathOperation mathOperation, UserDifficulty userDifficulty, bool isCorrect)
 			{
 				if (isCorrect == true)
 				{

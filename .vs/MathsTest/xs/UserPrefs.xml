@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{E48A33A5-DE45-4F4F-AE7D-7CDFC668160A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CanUseManyTimes.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Calculation.cs">
     <Files>
-      <File FileName="Program.cs" Line="179" Column="344" />
+      <File FileName="Program.cs" Line="169" Column="67" />
       <File FileName="RunTimer.cs" />
-      <File FileName="Calculation.cs" />
-      <File FileName="CanUseManyTimes.cs" Line="1" Column="1" />
+      <File FileName="Calculation.cs" Line="150" Column="9" />
+      <File FileName="CanUseManyTimes.cs" />
       <File FileName="SaveLastTestResults.cs" />
-      <File FileName="UserLoginSignUp.cs" Line="1" Column="1" />
-      <File FileName="FileUtils.cs" Line="1" Column="1" />
+      <File FileName="UserLoginSignUp.cs" />
+      <File FileName="FileUtils.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
