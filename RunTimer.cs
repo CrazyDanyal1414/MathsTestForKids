@@ -8,13 +8,11 @@ namespace MathsTest
     public class RunTimer
     {
 		public bool IsTimeLeft { get; private set; } = true;
-		static bool timerRunning = true;
 		public static void Timer(int numberOfSeconds, CancellationToken cancellationToken)
 		{
 			var whenToStop = DateTime.Now.AddSeconds(numberOfSeconds);
 			while (DateTime.Now < whenToStop)
 			{
-                while (timerRunning)
                 {
 					string timeLeft = (whenToStop - DateTime.Now).ToString(@"hh\:mm\:ss");
 					WriteToScreen($"Time Remaining: {timeLeft}", true);
@@ -24,7 +22,7 @@ namespace MathsTest
 		}
 
 		public Task timerTask;
-		CancellationTokenSource cancellationToken = new CancellationTokenSource();
+        readonly CancellationTokenSource cancellationToken = new CancellationTokenSource();
 		public RunTimer(int numberOfSeconds)
 		{
 			timerTask = Task.Run(() =>

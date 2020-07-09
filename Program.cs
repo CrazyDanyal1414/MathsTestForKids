@@ -25,27 +25,27 @@ namespace MathsTest
 				var (message, correctAnswer) = GetMathsEquation(mathOperation, userDifficulty);
 				if (mathRandomOperation == 4 || mathRandomOperation == 6)
 				{
-					CanUseManyTimes.WriteToScreen($"To the nearest integer, What is {message} =", false);
+					WriteToScreen($"To the nearest integer, What is {message} =", false);
 				}
 				else
 				{
-					CanUseManyTimes.WriteToScreen($"What is {message} =", false);
+					WriteToScreen($"What is {message} =", false);
 				}
 
-				double userAnswer = Convert.ToDouble(CanUseManyTimes.ReadInput());
+				double userAnswer = Convert.ToDouble(ReadInput());
 				if (Math.Round(correctAnswer) == userAnswer)
 				{
 					Console.ForegroundColor = ConsoleColor.Green;
-					CanUseManyTimes.WriteToScreen("Well Done!", false);
+					WriteToScreen("Well Done!", false);
 					Console.ResetColor();
-					score.Increment(mathOperation, userDifficulty, true);
+					score.Increment(mathOperation, true);
 				}
 				else
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
-					CanUseManyTimes.WriteToScreen("Your answer is incorrect!", false);
+					WriteToScreen("Your answer is incorrect!", false);
 					Console.ResetColor();
-					score.Increment(mathOperation, userDifficulty, false);
+					score.Increment(mathOperation, false);
 				}
 				numberOfQuestionsLeft--;
 				RunWithTimer.StopTimer(numberOfQuestionsLeft);
@@ -64,7 +64,7 @@ namespace MathsTest
 
             string userInputDifficulty = "E";
 			int numberOfQuestions;
-			string autoDifficultyInput = "";
+			string autoDifficultyInput;
 			int numberOfSeconds;
 			string testOrTwoPlayer;
 
@@ -109,16 +109,16 @@ namespace MathsTest
 			var filePath = Path.Combine(AppContext.BaseDirectory, "AccountDetail.gitignore");
 			(string userName, int LogInOrSignUp) = UserManager.LogInProcess(filePath);
 
-			OperationQuestionScore score = new OperationQuestionScore();
-			OperationQuestionScore playerTwoScore = new OperationQuestionScore();
+			OperationQuestionScore score;
+			OperationQuestionScore playerTwoScore;
 
 			UserDifficulty userSuggestingDifficulty = UserDifficulty.Easy;
 			if (File.Exists(FileUtils.GetUserFileName(userName)))
 			{
-				userSuggestingDifficulty = CanUseManyTimes.SuggestingDifficulty(userName);
+				userSuggestingDifficulty = SuggestingDifficulty(userName);
 			}
             var (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer) = UserInputs();
-			string playerTwoUserName = "";
+			string playerTwoUserName;
 
 			if (LogInOrSignUp == 1)
 			{

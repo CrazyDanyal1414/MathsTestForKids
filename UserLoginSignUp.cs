@@ -29,15 +29,15 @@ namespace MathsTest
             public void SerializeAccountDetails(string filePath)
             {
                 IFormatter bf = new BinaryFormatter();
-                using (Stream fs = new FileStream(filePath, FileMode.Create))
-                    bf.Serialize(fs, this);
+                using Stream fs = new FileStream(filePath, FileMode.Create);
+                bf.Serialize(fs, this);
             }
 
             public static UserManager DeserializeAccountDetails(string filePath)
             {
                 IFormatter bf = new BinaryFormatter();
-                using (Stream sr = new FileStream(filePath, FileMode.Open))
-                    return bf.Deserialize(sr) as UserManager;
+                using Stream sr = new FileStream(filePath, FileMode.Open);
+                return bf.Deserialize(sr) as UserManager;
             }
 
             public bool ContainsUserName(string userName) =>
@@ -62,9 +62,8 @@ namespace MathsTest
 				} while (LogInOrSignUp != 1 && LogInOrSignUp != 2);
 
 				var userName = "";
-				var password = "";
-				var logInSuccessfull = false;
-				var userDetails = new UserManager();
+                var logInSuccessfull = false;
+                var userDetails = new UserManager();
 				if (File.Exists(filePath))
 				{
 					userDetails = DeserializeAccountDetails(filePath);
@@ -77,49 +76,91 @@ namespace MathsTest
 
 				while (!logInSuccessfull)
 				{
-					if (LogInOrSignUp == 1)
-					{
-						Console.WriteLine("Write your username:");
-						userName = Console.ReadLine();
-						Console.WriteLine("Enter your password:");
-						password = Console.ReadLine();
-						if (userDetails.ContainsAccount(userName, password))
-						{
-							Console.WriteLine("You have logged in successfully!");
-							logInSuccessfull = true;
-							break;
-						}
-						else
-						{
-							Console.WriteLine("Your username or password is incorect, try again!");
-						}
-					}
-					else if (LogInOrSignUp == 2)
-					{
-						Console.WriteLine("Enter a username:");
-						userName = Console.ReadLine();
+                    string password = "";
+                    if (LogInOrSignUp == 1)
+                    {
+                        Console.WriteLine("Write your username:");
+                        userName = Console.ReadLine();
+                        Console.WriteLine("Enter your password:");
+                        do
+                        {
+                            ConsoleKeyInfo key = Console.ReadKey(true);
+                            if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+                            {
+                                password += key.KeyChar;
+                                Console.Write("*");
+                            }
+                            else
+                            {
+                                if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                                {
+                                    password = password.Substring(0, password.Length - 1);
+                                    Console.Write("\b \b");
+                                }
+                                else if (key.Key == ConsoleKey.Enter)
+                                {
+                                    Console.WriteLine("\n");
+                                    break;
+                                }
+                            }
+                        } while (true);
+                        if (userDetails.ContainsAccount(userName, password))
+                        {
+                            Console.WriteLine("You have logged in successfully!");
+                            logInSuccessfull = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your username or password is incorect, try again!");
+                        }
+                    }
+                    else if (LogInOrSignUp == 2)
+                    {
+                        Console.WriteLine("Enter a username:");
+                        userName = Console.ReadLine();
 
-						if (userDetails.ContainsUserName(userName))
-						{
-							Console.WriteLine("The username is taken. Try another one.");
-						}
-						else
-						{
-							Console.WriteLine("Enter a password:");
-							password = Console.ReadLine();
+                        if (userDetails.ContainsUserName(userName))
+                        {
+                            Console.WriteLine("The username is taken. Try another one.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Enter a password:");
+                            do
+                            {
+                                ConsoleKeyInfo key = Console.ReadKey(true);
+                                if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+                                {
+                                    password += key.KeyChar;
+                                    Console.Write("*");
+                                }
+                                else
+                                {
+                                    if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                                    {
+                                        password = password.Substring(0, password.Length - 1);
+                                        Console.Write("\b \b");
+                                    }
+                                    else if (key.Key == ConsoleKey.Enter)
+                                    {
+                                        Console.WriteLine("\n");
+                                        break;
+                                    }
+                                }
+                            } while (true);
 
-							logInSuccessfull = true;
-							userDetails.AddAccountDetails(userName, password);
-							userDetails.SerializeAccountDetails(filePath);
-							Console.WriteLine($"A new account for {userName} has been created!");
-						}
-					}
+                            logInSuccessfull = true;
+                            userDetails.AddAccountDetails(userName, password);
+                            userDetails.SerializeAccountDetails(filePath);
+                            Console.WriteLine($"A new account for {userName} has been created!");
+                        }
+                    }
                     else
                     {
-						Console.WriteLine("How shall we adress you?");
-						userName = Console.ReadLine();
+                        Console.WriteLine("How shall we adress you?");
+                        userName = Console.ReadLine();
                     }
-					Console.WriteLine("\n");
 				}
 				return (userName, LogInOrSignUp);
 			}
