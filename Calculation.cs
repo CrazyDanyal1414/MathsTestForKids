@@ -99,8 +99,7 @@ namespace MathsTest
 			public double EasyTests { get; set; }
 			public double NormalTests { get; set; }
 			public double HardTests { get; set; }
-			public int PlayerOneTwoPlayerChallenge { get; set; }
-			public int PlayerTwoTwoPlayerChallenge { get; set; }
+			public int TwoPlayerChallengeScore { get; set; }
 
 			public void Increment(MathOperation mathOperation, bool isCorrect)
 			{

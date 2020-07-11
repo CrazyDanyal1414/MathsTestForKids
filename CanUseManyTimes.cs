@@ -111,8 +111,7 @@ namespace MathsTest
 				score.EasyTests = objnew.EasyTests;
 				score.NormalTests = objnew.NormalTests;
 				score.HardTests = objnew.HardTests;
-				score.PlayerOneTwoPlayerChallenge = objnew.PlayerOneTwoPlayerChallenge;
-				score.PlayerTwoTwoPlayerChallenge = objnew.PlayerTwoTwoPlayerChallenge;
+				score.TwoPlayerChallengeScore = objnew.TwoPlayerChallengeScore;
 			}
 
 			if (userDifficulty == UserDifficulty.Easy)
@@ -144,7 +143,6 @@ namespace MathsTest
 				score.TotalHardQuestion += numberOfQuestions;
 				score.TotalHardScore = Math.Round((score.TotalHardScore + (double)(score.TotalScore / (double)numberOfQuestions) * 100) / score.HardTests, 2);
 			}
-			score.PlayerOneTwoPlayerChallenge += score.PlayerTwoTwoPlayerChallenge;
 		}
 
 		public static void StatsDisplay(Calculation.OperationQuestionScore score)
@@ -160,7 +158,7 @@ namespace MathsTest
 				Console.WriteLine($"You have answered {score.TotalEasyQuestion} easy questions so far with an average score of {score.TotalEasyScore}%");
 				Console.WriteLine($"You have answered {score.TotalNormalQuestion} normal questions so far with an average score of {score.TotalNormalScore}%");
 				Console.WriteLine($"You have answered {score.TotalHardQuestion} hard questions so far with an average score of {score.TotalHardScore}%");
-				Console.WriteLine($"You have won {score.PlayerOneTwoPlayerChallenge} twoPlayerChallenges");
+				Console.WriteLine($"You have won {score.TwoPlayerChallengeScore} twoPlayerChallenges");
 			}
 		}
 	}
