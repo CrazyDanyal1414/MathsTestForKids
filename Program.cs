@@ -53,7 +53,7 @@ namespace MathsTest
 			return score;
 		}
 
-		static (UserDifficulty, int, string, int, string) UserInputs()
+		static (UserDifficulty, int, string, int, string) UserInputs(string userName)
 		{
 			Dictionary<string, UserDifficulty> difficultyDictionary = new Dictionary<string, UserDifficulty>
             {
@@ -64,7 +64,7 @@ namespace MathsTest
 
             string userInputDifficulty = "E";
 			int numberOfQuestions;
-			string autoDifficultyInput;
+			string autoDifficultyInput = "";
 			int numberOfSeconds;
 			string testOrTwoPlayer;
 
@@ -74,13 +74,16 @@ namespace MathsTest
 				testOrTwoPlayer = Console.ReadLine().ToUpper();
 			} while (testOrTwoPlayer != "2" && testOrTwoPlayer != "T");
 
-			do
-			{
-				Console.WriteLine("Would you like to continue with the suggested difficulty? Please type 'Y' or 'N'");
-				autoDifficultyInput = Console.ReadLine().Substring(0).ToUpper();
-			} while (autoDifficultyInput != "Y" && autoDifficultyInput != "N");
+			if (File.Exists(FileUtils.GetUserFileName(userName)))
+            {
+				do
+				{
+					Console.WriteLine("Would you like to continue with the suggested difficulty? Please type 'Y' or 'N'");
+					autoDifficultyInput = Console.ReadLine().Substring(0).ToUpper();
+				} while (autoDifficultyInput != "Y" && autoDifficultyInput != "N");
+			}
 
-			if (autoDifficultyInput == "N")
+			if (autoDifficultyInput != "Y")
 			{
 				do
 				{
@@ -117,7 +120,7 @@ namespace MathsTest
 			{
 				userSuggestingDifficulty = SuggestingDifficulty(userName);
 			}
-            var (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer) = UserInputs();
+            var (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer) = UserInputs(userName);
 			string playerTwoUserName;
 
 			if (LogInOrSignUp == 1)
