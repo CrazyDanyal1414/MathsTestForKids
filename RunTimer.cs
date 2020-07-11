@@ -8,12 +8,15 @@ namespace MathsTest
     public class RunTimer
     {
 		public bool IsTimeLeft { get; private set; } = true;
+		static readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        readonly CancellationToken cancellationToken = cancellationTokenSource.Token;
 		public static void Timer(int numberOfSeconds, CancellationToken cancellationToken)
 		{
 			var whenToStop = DateTime.Now.AddSeconds(numberOfSeconds);
-			while (DateTime.Now < whenToStop)
-			{
-                {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+				while (DateTime.Now < whenToStop)
+				{
 					string timeLeft = (whenToStop - DateTime.Now).ToString(@"hh\:mm\:ss");
 					WriteToScreen($"Time Remaining: {timeLeft}", true);
 					Thread.Sleep(1000);
@@ -22,21 +25,20 @@ namespace MathsTest
 		}
 
 		public Task timerTask;
-        readonly CancellationTokenSource cancellationToken = new CancellationTokenSource();
 		public RunTimer(int numberOfSeconds)
 		{
 			timerTask = Task.Run(() =>
 			{
-				Timer(numberOfSeconds, cancellationToken.Token);
+				Timer(numberOfSeconds, cancellationToken);
 				timerTask = null;
 				IsTimeLeft = false;
-			}, cancellationToken.Token);
+			}, cancellationToken);
 		}
 		public void StopTimer(int numberOfQuestionsLeft)
 		{
 			if(numberOfQuestionsLeft == 0)
             {
-				cancellationToken.Cancel();
+				cancellationToken.ThrowIfCancellationRequested();
 			}
 		}
 	}
