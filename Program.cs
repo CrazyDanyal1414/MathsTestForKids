@@ -122,6 +122,7 @@ namespace MathsTest
 			}
             var (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer) = UserInputs(userName);
 			string playerTwoUserName;
+			int playerTwoLogInOrSignUp;
 
 			if (LogInOrSignUp == 1)
 			{
@@ -137,14 +138,17 @@ namespace MathsTest
 
 				Console.WriteLine($"Total score: {score.TotalScore} of {numberOfQuestions}");
 				ScoreDisplay(numberOfQuestions, score, userDifficulty, userName);
-				StatsDisplay(score);
-				SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore);
+                if (LogInOrSignUp != 3)
+                {
+					StatsDisplay(score);
+					SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore);
+				}
 			}
 			else if (testOrTwoPlayer == "2")
             {
 				Console.WriteLine($"Player 1: {userName}");
 				Console.WriteLine($"What is Player 2's name?");
-				(playerTwoUserName, _) = UserManager.LogInProcess(filePath);
+				(playerTwoUserName, playerTwoLogInOrSignUp) = UserManager.LogInProcess(filePath);
 				if (File.Exists(FileUtils.GetUserFileName(playerTwoUserName)))
 				{
 					SaveToFile.DeserializeLastTest(playerTwoUserName);
@@ -163,7 +167,6 @@ namespace MathsTest
 				playerTwoScore = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);
 				Console.WriteLine($"{playerTwoUserName} got a score of {playerTwoScore.PlayerTwoScore} out of {numberOfQuestions}", false);
 				ScoreDisplay(numberOfQuestions, playerTwoScore, userDifficulty, playerTwoUserName);
-				SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.TwoPlayerChallengeScore);
 				if (score.TotalScore > playerTwoScore.TotalScore)
                 {
 					Console.WriteLine($"{userName} won the challenge!🥳");
@@ -178,9 +181,16 @@ namespace MathsTest
                 {
 					Console.WriteLine("This challenge ended in stalemate");
                 }
-				SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore);
-				SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.TwoPlayerChallengeScore);
-				StatsDisplay(score);
+
+				if (LogInOrSignUp != 3)
+                {
+					SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore);
+					StatsDisplay(score);
+				}
+				if (playerTwoLogInOrSignUp != 3)
+                {
+					SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.TwoPlayerChallengeScore);
+				}
 			}
 		}
 	}

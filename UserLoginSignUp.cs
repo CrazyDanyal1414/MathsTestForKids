@@ -59,7 +59,7 @@ namespace MathsTest
 				{
 					Console.WriteLine("To Login Type 1, To Create a new account Type 2, and to play as a guest Type 3");
 					int.TryParse(Console.ReadLine(), out LogInOrSignUp);
-				} while (LogInOrSignUp != 1 && LogInOrSignUp != 2);
+				} while (LogInOrSignUp != 1 && LogInOrSignUp != 2 && LogInOrSignUp != 3);
 
 				var userName = "";
                 var logInSuccessfull = false;
@@ -156,10 +156,11 @@ namespace MathsTest
                             Console.WriteLine($"A new account for {userName} has been created!");
                         }
                     }
-                    else
+                    else if (LogInOrSignUp == 3)
                     {
                         Console.WriteLine("How shall we adress you?");
                         userName = Console.ReadLine();
+                        logInSuccessfull = true;
                     }
 				}
 				return (userName, LogInOrSignUp);
