@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{E48A33A5-DE45-4F4F-AE7D-7CDFC668160A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RunTimer.cs">
     <Files>
-      <File FileName="Program.cs" Line="138" Column="313" />
-      <File FileName="RunTimer.cs" />
+      <File FileName="Program.cs" Line="86" Column="33" />
+      <File FileName="RunTimer.cs" Line="41" Column="51" />
       <File FileName="Calculation.cs" />
       <File FileName="CanUseManyTimes.cs" />
       <File FileName="SaveLastTestResults.cs" />
