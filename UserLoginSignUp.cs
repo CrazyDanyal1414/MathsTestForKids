@@ -57,7 +57,9 @@ namespace MathsTest
 				int LogInOrSignUp;
 				do
 				{
-					Console.WriteLine("To Login Type 1, To Create a new account Type 2, and to play as a guest Type 3");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("To Login Type 1, To Create a new account Type 2, and to play as a guest Type 3");
+                    Console.ResetColor();
 					int.TryParse(Console.ReadLine(), out LogInOrSignUp);
 				} while (LogInOrSignUp != 1 && LogInOrSignUp != 2 && LogInOrSignUp != 3);
 
@@ -79,9 +81,13 @@ namespace MathsTest
                     string password = "";
                     if (LogInOrSignUp == 1)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("Write your username:");
+                        Console.ResetColor();
                         userName = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Enter your password:");
+                        Console.ResetColor();
                         do
                         {
                             ConsoleKeyInfo key = Console.ReadKey(true);
@@ -106,27 +112,37 @@ namespace MathsTest
                         } while (true);
                         if (userDetails.ContainsAccount(userName, password))
                         {
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("You have logged in successfully!");
+                            Console.ResetColor();
                             logInSuccessfull = true;
                             break;
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Your username or password is incorect, try again!");
+                            Console.ResetColor();
                         }
                     }
                     else if (LogInOrSignUp == 2)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("Enter a username:");
+                        Console.ResetColor();
                         userName = Console.ReadLine();
 
                         if (userDetails.ContainsUserName(userName))
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("The username is taken. Try another one.");
+                            Console.ResetColor();
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("Enter a password:");
+                            Console.ResetColor();
                             do
                             {
                                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -153,12 +169,16 @@ namespace MathsTest
                             logInSuccessfull = true;
                             userDetails.AddAccountDetails(userName, password);
                             userDetails.SerializeAccountDetails(filePath);
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"A new account for {userName} has been created!");
+                            Console.ResetColor();
                         }
                     }
                     else if (LogInOrSignUp == 3)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("How shall we adress you?");
+                        Console.ResetColor();
                         userName = Console.ReadLine();
                         logInSuccessfull = true;
                     }

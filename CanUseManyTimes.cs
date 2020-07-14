@@ -42,9 +42,12 @@ namespace MathsTest
 			ToFile objnew = SaveToFile.DeserializeLastTest(userName);
 			UserDifficulty userDifficulty = UserDifficulty.Easy;
 
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
 			Console.WriteLine($"Last time you did the test on {objnew.UserDifficulty} level and got {objnew.TotalScore}/{objnew.NumberOfQuestions}");
+			Console.ResetColor();
 			double decimalScore = (double)objnew.TotalScore / (double)objnew.NumberOfQuestions;
 
+			Console.ForegroundColor = ConsoleColor.Blue;
 			if (objnew.UserDifficulty == UserDifficulty.Easy)
 			{
 				if (decimalScore <= 0.7)
@@ -94,6 +97,7 @@ namespace MathsTest
 					userDifficulty = UserDifficulty.Hard;
 				}
 			}
+			Console.ResetColor();
 			return userDifficulty;
 		}
 

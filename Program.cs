@@ -68,6 +68,7 @@ namespace MathsTest
 			int numberOfSeconds;
 			string testOrTwoPlayer;
 
+			Console.ForegroundColor = ConsoleColor.Magenta;
 			do
 			{
 				Console.WriteLine("Please type '2' for 2 player and 'T' for test");
@@ -103,6 +104,7 @@ namespace MathsTest
 				Console.WriteLine("How many seconds would you like the test to be? Please type a number divisible by 30!");
 				int.TryParse(Console.ReadLine(), out numberOfSeconds);
 			} while (numberOfSeconds % 30 != 0);
+			Console.ResetColor();
 
 			return (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer);
 		}
@@ -169,12 +171,16 @@ namespace MathsTest
 				ScoreDisplay(numberOfQuestions, playerTwoScore, userDifficulty, playerTwoUserName);
 				if (score.TotalScore > playerTwoScore.TotalScore)
                 {
+					Console.ForegroundColor = ConsoleColor.Green;
 					Console.WriteLine($"{userName} won the challenge!🥳");
+					Console.ResetColor();
 					score.TwoPlayerChallengeScore++;
                 }
 				else if (score.TotalScore < playerTwoScore.TotalScore)
 				{
+					Console.ForegroundColor = ConsoleColor.Green;
 					Console.WriteLine($"{playerTwoUserName} won the challenge!🥳");
+					Console.ResetColor();
 					playerTwoScore.TwoPlayerChallengeScore++;
 				}
                 else
