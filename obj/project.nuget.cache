@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "XgLp7xFCFpNP3+r4o1vHdRqNix9yguIfmJOywN6Awbmt/CdkeNGjSTHBN9UvxUFUDq8N9BRRVza0f0oNMU7Z2A==",
+  "dgSpecHash": "1KQtUHfVGUD4rXg89hA8efCBIAttSA7RIJfMITf9Mk3fzaRnx5iXm6Pq2ID+h0sz04xZ+yYOYs8wZd7zyBlteg==",
   "success": true,
   "projectFilePath": "/Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/MathsTest.csproj",
   "expectedPackageFiles": [
     "/Users/danyalqureshi/.nuget/packages/nito.cancellation/1.0.5/nito.cancellation.1.0.5.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/nito.disposables/1.2.3/nito.disposables.1.2.3.nupkg.sha512",
+    "/Users/danyalqureshi/.nuget/packages/speech.synthesis.core/0.1.0/speech.synthesis.core.0.1.0.nupkg.sha512",
+    "/Users/danyalqureshi/.nuget/packages/speech.synthesis.microsoft/0.1.0/speech.synthesis.microsoft.0.1.0.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/system.collections.immutable/1.4.0/system.collections.immutable.1.4.0.nupkg.sha512"
   ],
   "logs": []

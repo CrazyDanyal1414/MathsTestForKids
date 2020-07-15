@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -14,6 +14,7 @@ namespace MathsTest
         {
             public string UserName { get; set; }
             public string Password { get; set; }
+
             public User(string userName, string password)
             {
                 UserName = userName;
@@ -171,6 +172,7 @@ namespace MathsTest
                             userDetails.SerializeAccountDetails(filePath);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"A new account for {userName} has been created!");
+                            Console.WriteLine("\n");
                             Console.ResetColor();
                         }
                     }
@@ -180,6 +182,7 @@ namespace MathsTest
                         Console.WriteLine("How shall we adress you?");
                         Console.ResetColor();
                         userName = Console.ReadLine();
+                        Console.WriteLine("\n");
                         logInSuccessfull = true;
                     }
 				}

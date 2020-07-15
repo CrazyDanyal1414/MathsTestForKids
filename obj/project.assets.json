@@ -26,6 +26,27 @@
           "lib/netstandard2.0/Nito.Disposables.dll": {}
         }
       },
+      "Speech.Synthesis.Core/0.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Speech.Synthesis.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Speech.Synthesis.Core.dll": {}
+        }
+      },
+      "Speech.Synthesis.Microsoft/0.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Speech.Synthesis.Core": "0.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Speech.Synthesis.Microsoft.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Speech.Synthesis.Microsoft.dll": {}
+        }
+      },
       "System.Collections.Immutable/1.4.0": {
         "type": "package",
         "compile": {
@@ -68,6 +89,30 @@
         "nito.disposables.nuspec"
       ]
     },
+    "Speech.Synthesis.Core/0.1.0": {
+      "sha512": "4j0mgK6e0v3+3VUMmyGnlYsHZGQvh9ek5Os2cgY3Dmewtg4XnnLu2i/i0IuvV23WCAnWCB9DdVHeTUHRtet3dw==",
+      "type": "package",
+      "path": "speech.synthesis.core/0.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Speech.Synthesis.Core.dll",
+        "speech.synthesis.core.0.1.0.nupkg.sha512",
+        "speech.synthesis.core.nuspec"
+      ]
+    },
+    "Speech.Synthesis.Microsoft/0.1.0": {
+      "sha512": "l98t9RywqYL5ughvTKM+t2YhXd1BW3cP+zmYuJs94pMq3M1NDbkoGAfZm1iJQAZbSMXTg/YcI0WZzt2sN2mqog==",
+      "type": "package",
+      "path": "speech.synthesis.microsoft/0.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Speech.Synthesis.Microsoft.dll",
+        "speech.synthesis.microsoft.0.1.0.nupkg.sha512",
+        "speech.synthesis.microsoft.nuspec"
+      ]
+    },
     "System.Collections.Immutable/1.4.0": {
       "sha512": "71hw5RUJRu5+q/geUY69gpXD8Upd12cH+F3MwpXV2zle7Bqqkrmc1JblOTuvUcgmdnUtQvBlV5e1d6RH+H2lvA==",
       "type": "package",
@@ -94,7 +139,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Nito.Cancellation >= 1.0.5"
+      "Nito.Cancellation >= 1.0.5",
+      "Speech.Synthesis.Core >= 0.1.0",
+      "Speech.Synthesis.Microsoft >= 0.1.0"
     ]
   },
   "packageFolders": {
@@ -135,6 +182,14 @@
           "Nito.Cancellation": {
             "target": "Package",
             "version": "[1.0.5, )"
+          },
+          "Speech.Synthesis.Core": {
+            "target": "Package",
+            "version": "[0.1.0, )"
+          },
+          "Speech.Synthesis.Microsoft": {
+            "target": "Package",
+            "version": "[0.1.0, )"
           }
         },
         "imports": [

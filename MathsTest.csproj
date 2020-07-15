@@ -7,5 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Nito.Cancellation" Version="1.0.5" />
+    <PackageReference Include="Speech.Synthesis.Core" Version="0.1.0" />
+    <PackageReference Include="Speech.Synthesis.Microsoft" Version="0.1.0" />
   </ItemGroup>
 </Project>

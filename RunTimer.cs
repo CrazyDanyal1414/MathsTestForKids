@@ -11,12 +11,16 @@ namespace MathsTest
 		public static void Timer(int numberOfSeconds, CancellationToken cancellationToken)
 		{
 			var whenToStop = DateTime.Now.AddSeconds(numberOfSeconds);
-			while (DateTime.Now < whenToStop && !cancellationToken.IsCancellationRequested)
+			while (DateTime.Now < whenToStop)
 			{
 				string timeLeft = (whenToStop - DateTime.Now).ToString(@"hh\:mm\:ss");
 				WriteToScreen($"Time Remaining: {timeLeft}", true);
 				Thread.Sleep(1000);
 			}
+			if (DateTime.Now >= whenToStop)
+            {
+				cancellationTokenSource.Cancel();
+            }
 		}
 
 		static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();

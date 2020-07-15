@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
 using static MathsTest.Calculation;
-using static MathsTest.SaveLastTestResults;
 using static MathsTest.UserLoginSignUp;
 using static MathsTest.CanUseManyTimes;
-
+using static MathsTest.SaveLastTestResults;
 
 namespace MathsTest
 {
@@ -103,7 +102,7 @@ namespace MathsTest
 			{
 				Console.WriteLine("How many seconds would you like the test to be? Please type a number divisible by 30!");
 				int.TryParse(Console.ReadLine(), out numberOfSeconds);
-			} while (numberOfSeconds % 30 != 0);
+			} while (numberOfSeconds % 10 != 0);
 			Console.ResetColor();
 
 			return (userDifficulty, numberOfQuestions, autoDifficultyInput, numberOfSeconds, testOrTwoPlayer);
@@ -111,7 +110,7 @@ namespace MathsTest
 
 		public static void Main(string[] args)
 	    {
-			var filePath = Path.Combine(AppContext.BaseDirectory, "AccountDetail.gitignore");
+	        var filePath = Path.Combine(AppContext.BaseDirectory, "AccountDetail.gitignore");
 			(string userName, int LogInOrSignUp) = UserManager.LogInProcess(filePath);
 
 			OperationQuestionScore score;

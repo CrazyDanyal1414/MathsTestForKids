@@ -39,6 +39,14 @@
             "Nito.Cancellation": {
               "target": "Package",
               "version": "[1.0.5, )"
+            },
+            "Speech.Synthesis.Core": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Speech.Synthesis.Microsoft": {
+              "target": "Package",
+              "version": "[0.1.0, )"
             }
           },
           "imports": [
