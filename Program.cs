@@ -133,6 +133,8 @@ namespace MathsTest
 				}
 			}
 
+			Console.WriteLine("Get a piece of paper and a pen out, and Lets Start!");
+			Console.WriteLine("\n");
 			if (testOrTwoPlayer == "T")
 			{
 				score = RunTest(numberOfQuestions, userDifficulty, numberOfSeconds);

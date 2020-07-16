@@ -26,3 +26,5 @@
 /Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Nito.Cancellation.dll
 /Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Nito.Disposables.dll
 /Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.csproj.CopyComplete
+/Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Speech.Synthesis.Core.dll
+/Users/danyalqureshi/Projects/MathsTestForKids-master/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Speech.Synthesis.Microsoft.dll

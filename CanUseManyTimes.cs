@@ -147,6 +147,7 @@ namespace MathsTest
 				score.TotalHardQuestion += numberOfQuestions;
 				score.TotalHardScore = Math.Round((score.TotalHardScore + (double)(score.TotalScore / (double)numberOfQuestions) * 100) / score.HardTests, 2);
 			}
+			Console.WriteLine("\n");
 		}
 
 		public static void StatsDisplay(Calculation.OperationQuestionScore score)
