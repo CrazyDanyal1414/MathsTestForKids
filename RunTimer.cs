@@ -8,7 +8,7 @@ namespace MathsTest
     public class RunTimer
     {
 		public bool IsTimeLeft { get; private set; } = true;
-		public static void Timer(int numberOfSeconds, CancellationToken cancellationToken)
+		public static void Timer(int numberOfSeconds)
 		{
 			var whenToStop = DateTime.Now.AddSeconds(numberOfSeconds);
 			while (DateTime.Now < whenToStop)
@@ -32,7 +32,7 @@ namespace MathsTest
 			{
 				while (!cancellationToken.IsCancellationRequested)
                 {
-					Timer(numberOfSeconds, cancellationToken);
+					Timer(numberOfSeconds);
 				}
 				timerTask = null;
 				IsTimeLeft = false;

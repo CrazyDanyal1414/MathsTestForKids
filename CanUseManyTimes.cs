@@ -45,7 +45,7 @@ namespace MathsTest
 			Console.ForegroundColor = ConsoleColor.DarkCyan;
 			Console.WriteLine($"Last time you did the test on {objnew.UserDifficulty} level and got {objnew.TotalScore}/{objnew.NumberOfQuestions}");
 			Console.ResetColor();
-			double decimalScore = (double)objnew.TotalScore / (double)objnew.NumberOfQuestions;
+			double decimalScore = objnew.TotalScore / (double)objnew.NumberOfQuestions;
 
 			Console.ForegroundColor = ConsoleColor.Blue;
 			if (objnew.UserDifficulty == UserDifficulty.Easy)
@@ -116,6 +116,7 @@ namespace MathsTest
 				score.NormalTests = objnew.NormalTests;
 				score.HardTests = objnew.HardTests;
 				score.TwoPlayerChallengeScore = objnew.TwoPlayerChallengeScore;
+				score.AllTimeCorrectAnswers = objnew.AllTimeCorrectAnswers;
 			}
 
 			if (userDifficulty == UserDifficulty.Easy)
@@ -147,6 +148,7 @@ namespace MathsTest
 				score.TotalHardQuestion += numberOfQuestions;
 				score.TotalHardScore = Math.Round((score.TotalHardScore + (double)(score.TotalScore / (double)numberOfQuestions) * 100) / score.HardTests, 2);
 			}
+			score.AllTimeCorrectAnswers += score.TotalScore;
 			Console.WriteLine("\n");
 		}
 
@@ -164,6 +166,7 @@ namespace MathsTest
 				Console.WriteLine($"You have answered {score.TotalNormalQuestion} normal questions so far with an average score of {score.TotalNormalScore}%");
 				Console.WriteLine($"You have answered {score.TotalHardQuestion} hard questions so far with an average score of {score.TotalHardScore}%");
 				Console.WriteLine($"You have won {score.TwoPlayerChallengeScore} twoPlayerChallenges");
+				Console.WriteLine($"You have gotten {score.AllTimeCorrectAnswers} answers correct so far!");
 			}
 		}
 	}

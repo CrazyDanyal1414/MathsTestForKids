@@ -144,7 +144,7 @@ namespace MathsTest
                 if (LogInOrSignUp != 3)
                 {
 					StatsDisplay(score);
-					SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore);
+					SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore, score.AllTimeCorrectAnswers);
 				}
 			}
 			else if (testOrTwoPlayer == "2")
@@ -188,15 +188,14 @@ namespace MathsTest
                 {
 					Console.WriteLine("This challenge ended in stalemate");
                 }
-
 				if (LogInOrSignUp != 3)
                 {
-					SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore);
+					SaveToFile.SerializeLastTest(numberOfQuestions, score.TotalScore, userDifficulty, userName, score.TotalEasyQuestion, score.TotalEasyScore, score.TotalNormalQuestion, score.TotalNormalScore, score.TotalHardQuestion, score.TotalHardScore, score.EasyTests, score.NormalTests, score.HardTests, score.TwoPlayerChallengeScore, score.AllTimeCorrectAnswers);
 					StatsDisplay(score);
 				}
 				if (playerTwoLogInOrSignUp != 3)
                 {
-					SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.TwoPlayerChallengeScore);
+					SaveToFile.SerializeLastTest(numberOfQuestions, playerTwoScore.TotalScore, userDifficulty, playerTwoUserName, playerTwoScore.TotalEasyQuestion, playerTwoScore.TotalEasyScore, playerTwoScore.TotalNormalQuestion, playerTwoScore.TotalNormalScore, playerTwoScore.TotalHardQuestion, playerTwoScore.TotalHardScore, playerTwoScore.EasyTests, playerTwoScore.NormalTests, playerTwoScore.HardTests, playerTwoScore.TwoPlayerChallengeScore, playerTwoScore.AllTimeCorrectAnswers);
 				}
 			}
 		}

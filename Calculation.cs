@@ -24,18 +24,14 @@ namespace MathsTest
 		public static (int operationMin, int operationMax) GetPossibleOperationsByDifficulty(UserDifficulty userDifficulty)
 		{
 
-			switch (userDifficulty)
-			{
-				case UserDifficulty.Easy:
-					return (1, 4);
-				case UserDifficulty.Normal:
-					return (1, 5);
-				case UserDifficulty.Hard:
-					return (3, 7);
-				default:
-					throw new Exception();
-			}
-		}
+            return userDifficulty switch
+            {
+                UserDifficulty.Easy => (1, 4),
+                UserDifficulty.Normal => (1, 5),
+                UserDifficulty.Hard => (3, 7),
+                _ => throw new Exception(),
+            };
+        }
 
 		public static (string message, double correctAnswer) GetMathsEquation(MathOperation mathOperation, UserDifficulty userDifficulty)
 		{
@@ -100,6 +96,7 @@ namespace MathsTest
 			public double NormalTests { get; set; }
 			public double HardTests { get; set; }
 			public int TwoPlayerChallengeScore { get; set; }
+			public int AllTimeCorrectAnswers { get; set; }
 
 			public void Increment(MathOperation mathOperation, bool isCorrect)
 			{
