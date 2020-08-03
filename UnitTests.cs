@@ -19,15 +19,9 @@ namespace MathsTest
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
             CancellationToken cancellationToken = cancellationTokenSource.Token;
+            cancellationTokenSource.Cancel();
             Program.RunTest(0, UserDifficulty.Easy, 30);
-            if (cancellationToken.IsCancellationRequested)
-            {
-                Assert.That(cancellationToken.IsCancellationRequested);
-            }
-            else
-            {
-                Assert.That(!cancellationToken.IsCancellationRequested);
-            }
+            Assert.That(cancellationToken.IsCancellationRequested);
         }
 
         [TestCase]
@@ -35,7 +29,6 @@ namespace MathsTest
         {
             UserDifficulty userDifficulty = CanUseManyTimes.SuggestingDifficulty("danyal");
             Assert.AreEqual(UserDifficulty.Easy, userDifficulty);
-            
         }
     }
 }
