@@ -40,10 +40,6 @@
               "target": "Package",
               "version": "[16.6.1, )"
             },
-            "Microsoft.TestPlatform.TestHost": {
-              "target": "Package",
-              "version": "[16.6.1, )"
-            },
             "NUnit": {
               "target": "Package",
               "version": "[3.12.0, )"
@@ -55,14 +51,6 @@
             "Nito.Cancellation": {
               "target": "Package",
               "version": "[1.0.5, )"
-            },
-            "Speech.Synthesis.Core": {
-              "target": "Package",
-              "version": "[0.1.0, )"
-            },
-            "Speech.Synthesis.Microsoft": {
-              "target": "Package",
-              "version": "[0.1.0, )"
             }
           },
           "imports": [

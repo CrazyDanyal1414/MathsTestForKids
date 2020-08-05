@@ -8,7 +8,7 @@ using static MathsTest.SaveLastTestResults;
 
 namespace MathsTest
 {
-    class Program
+    public class Program
 	{
 		public static OperationQuestionScore RunTest(int numberOfQuestionsLeft, UserDifficulty userDifficulty, int numberOfSeconds)
 		{

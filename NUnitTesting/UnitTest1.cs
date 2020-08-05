@@ -1,12 +1,12 @@
-using System.Threading;
+using MathsTest;
 using NUnit.Framework;
+using System.Threading;
 
-namespace MathsTest
+namespace NUnitTesting
 {
-    [TestFixture]
     public class NUnitTest
     {
-        [TestCase]
+        [Test]
         public void CheckIfGetPossibleOperationsByDifficultyWorks()
         {
             var (operationmin, operationmax) = Calculation.GetPossibleOperationsByDifficulty(UserDifficulty.Easy);
@@ -14,7 +14,7 @@ namespace MathsTest
             Assert.AreEqual(4, operationmax);
         }
 
-        [TestCase]
+        [Test]
         public void TimerCancellationRequested()
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
@@ -24,7 +24,7 @@ namespace MathsTest
             Assert.That(cancellationToken.IsCancellationRequested);
         }
 
-        [TestCase]
+        [Test]
         public void CheckingIfSuggestingCorrectDifficulty()
         {
             UserDifficulty userDifficulty = CanUseManyTimes.SuggestingDifficulty("danyal");

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "krLl2WUvozTS+vnkUPvQxjCYq/gNYyqzAkVlhZGc5LaoeouuJ6joGLSYOzu5bXhuFKbV7ZFI0W5zFgr98G/SMQ==",
+  "dgSpecHash": "o+ZPrJ6y9l8ll3Ch+WoMWfgsv4M6bocsdTNbnM1zbNdL6L9VWuVA8ACTb4065rFsDyEJVHkK3R63kLSmHe0wbQ==",
   "success": true,
   "projectFilePath": "/Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/MathsTest.csproj",
   "expectedPackageFiles": [
@@ -22,8 +22,6 @@
     "/Users/danyalqureshi/.nuget/packages/nunit/3.12.0/nunit.3.12.0.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/nunit3testadapter/3.17.0/nunit3testadapter.3.17.0.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/runtime.native.system/4.3.0/runtime.native.system.4.3.0.nupkg.sha512",
-    "/Users/danyalqureshi/.nuget/packages/speech.synthesis.core/0.1.0/speech.synthesis.core.0.1.0.nupkg.sha512",
-    "/Users/danyalqureshi/.nuget/packages/speech.synthesis.microsoft/0.1.0/speech.synthesis.microsoft.0.1.0.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/system.appcontext/4.1.0/system.appcontext.4.1.0.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/Users/danyalqureshi/.nuget/packages/system.collections.immutable/1.4.0/system.collections.immutable.1.4.0.nupkg.sha512",

@@ -35,8 +35,6 @@
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/MathsTest.pdb
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Nito.Cancellation.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Nito.Disposables.dll
-/Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Speech.Synthesis.Core.dll
-/Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Speech.Synthesis.Microsoft.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.csprojAssemblyReference.cache
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.AssemblyInfoInputs.cache
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.AssemblyInfo.cs
@@ -45,13 +43,13 @@
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.pdb
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/obj/Debug/netcoreapp3.1/MathsTest.genruntimeconfig.cache
+/Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/nunit.framework.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/NUnit3.TestAdapter.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/NUnit3.TestAdapter.pdb
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/nunit.engine.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/nunit.engine.api.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/nunit.engine.core.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Microsoft.DotNet.InternalAbstractions.dll
-/Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/nunit.framework.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/System.Xml.XPath.XmlDocument.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll
 /Users/danyalqureshi/Projects/MathsTestForKids/MathsTest/MathsTest/bin/Debug/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll
