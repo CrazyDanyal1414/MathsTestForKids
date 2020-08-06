@@ -30,5 +30,12 @@ namespace NUnitTesting
             UserDifficulty userDifficulty = CanUseManyTimes.SuggestingDifficulty("danyal");
             Assert.AreEqual(UserDifficulty.Easy, userDifficulty);
         }
+
+        [Test]
+        public void CheckIfNumber1AndNumber2AreInRange()
+        {
+            (string message, double correctAnswer) = Calculation.GetMathsEquation(MathOperation.Multiplication, UserDifficulty.Easy);
+            Assert.That(correctAnswer < 144 && correctAnswer >= 0);
+        }
     }
 }
