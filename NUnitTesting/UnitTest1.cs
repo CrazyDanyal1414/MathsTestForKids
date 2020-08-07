@@ -1,6 +1,7 @@
 using MathsTest;
 using NUnit.Framework;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace NUnitTesting
 {
@@ -17,10 +18,9 @@ namespace NUnitTesting
         [Test]
         public void TimerCancellationRequested()
         {
-            int numberOfSeconds = 30;
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-            Program.RunTest(0, UserDifficulty.Easy, numberOfSeconds);
-            Assert.That(numberOfSeconds <= 30 && numberOfSeconds >= 29);
+            Program.RunTest(0, UserDifficulty.Easy, 30);
+            Task.Run(() => { WaitHandle.WaitAny(new[] { cancellationTokenSource.Token.WaitHandle }); });
         }
 
         [Test]
