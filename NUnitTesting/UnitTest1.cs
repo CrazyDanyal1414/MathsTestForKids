@@ -17,11 +17,10 @@ namespace NUnitTesting
         [Test]
         public void TimerCancellationRequested()
         {
+            int numberOfSeconds = 30;
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-            CancellationToken cancellationToken = cancellationTokenSource.Token;
-            cancellationTokenSource.Cancel();
-            Program.RunTest(0, UserDifficulty.Easy, 30);
-            Assert.That(cancellationToken.IsCancellationRequested);
+            Program.RunTest(0, UserDifficulty.Easy, numberOfSeconds);
+            Assert.That(numberOfSeconds <= 30 && numberOfSeconds >= 29);
         }
 
         [Test]
