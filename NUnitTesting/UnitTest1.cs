@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NUnitTesting
 {
-    public class NUnitTest
+    public class NUnitTests
     {
         [Test]
         public void CheckIfGetPossibleOperationsByDifficultyWorks()
@@ -16,11 +16,11 @@ namespace NUnitTesting
         }
 
         [Test]
-        public void TimerCancellationRequested()
+        public void CheckIfThereIsTimeLeft()
         {
-            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-            Program.RunTest(0, UserDifficulty.Easy, 30);
-            Task.Run(() => { WaitHandle.WaitAny(new[] { cancellationTokenSource.Token.WaitHandle }); });
+            RunTimer RunWithTimer = new RunTimer(0);
+            Thread.Sleep(1);
+            Assert.AreEqual(RunWithTimer.IsTimeLeft, false);
         }
 
         [Test]
